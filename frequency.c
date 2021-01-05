@@ -6,6 +6,13 @@
 #define SUM_CHILDREN 26
 #define CONST_TO_CELL 97
 
+/**
+This FreqNode contain:
+word - represent the word until this node from root
+c - the char that associated with this node
+count - sum of words
+children[] - pointer array to each son
+*/
 typedef struct FreqNode {
     char *word;
     char c;
@@ -46,7 +53,6 @@ void printZtoA(struct FreqNode *r){
     free(r);
 }
 
-
 struct FreqNode* newNode(char ch, char *getWord) 
 { 
 struct FreqNode* node = (struct FreqNode*)malloc(sizeof(struct FreqNode));
@@ -60,14 +66,12 @@ node->c = ch;
 return node; 
 }
 
-
 int main(int argc, char* argcv[]){
     char let;
     struct FreqNode* root = newNode('#',""); 
     struct FreqNode* curr = root;
 
     while((let = fgetc(stdin))!=-1){
-        //printf("%c",let);
         if(isalpha(let) > 0){
             let = tolower(let);
             int cellIndex = let - CONST_TO_CELL;
@@ -108,6 +112,5 @@ int main(int argc, char* argcv[]){
         printf("Invalid sign!");
     }
     free(root->word);
-    //free(root);
     return 0;
 }
