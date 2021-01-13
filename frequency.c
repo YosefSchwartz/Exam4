@@ -85,9 +85,11 @@ int main(int argc, char* argcv[]){
             }      
         }
         else{
-            if(curr!=root){
-                curr->count++;
-                curr = root;               
+            if(let == ' ' || let == '\n' || let == '\t' || let == EOF){
+                if(curr!=root){
+                    curr->count++;
+                    curr = root;               
+                }
             }
         }
     }
